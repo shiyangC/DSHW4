@@ -44,7 +44,6 @@ public class CountingIndexer {
                        Context context
                        ) throws IOException, InterruptedException {
       HashMap<String, Integer> chapSum = new HashMap<String, Integer>();
-      String word = key.toString();
 
       for (Text val : values) {
         String chap = val.toString();
@@ -56,9 +55,9 @@ public class CountingIndexer {
           chapSum.put(chap, 1);
         }
       }
-      String res="";
+      String res="\n";
       for (Map.Entry<String, Integer> pair : chapSum.entrySet()) {
-        res=res+pair.getKey()+":"+pair.getValue()+"\n";
+        res=res+"<"+pair.getKey()+", "+pair.getValue()+">\n";
       }
       result.set(res);
       context.write(key, result);
@@ -75,7 +74,7 @@ public class CountingIndexer {
     Job job = new Job(conf, "word count");
     job.setJarByClass(CountingIndexer.class);
     job.setMapperClass(TokenizerMapper.class);
-    job.setCombinerClass(IntSumReducer.class);
+    //job.setCombinerClass(IntSumReducer.class);
     job.setReducerClass(IntSumReducer.class);
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(Text.class);
