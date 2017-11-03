@@ -1,0 +1,14 @@
+hadoop-2.6.5
+src/build/*.class
+src/output
+src/input
+src/CountingIndexer.jar
+
+!hadoop-2.6.5/etc/hadoop/yarn-site.xml
+!hadoop-2.6.5/etc/hadoop/core-site.xml
+!hadoop-2.6.5/etc/hadoop/hdfs-site.xml
+!hadoop-2.6.5/etc/hadoop/mapred-site.xml
+!hadoop-2.6.5/etc/hadoop/hadoop-env.sh
+!hadoop-2.6.5/etc/hadoop/yarn-env.sh
+
+
